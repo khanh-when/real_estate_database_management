@@ -2,6 +2,7 @@
 
 ## Part I: MariaDB
 
-Database Prepartion
+Database Preparation
 
 ## Part II: Parse/Store .CSV Data
+
