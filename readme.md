@@ -1,8 +1,7 @@
-Python RealEstate Project
+# Project Xero
 
-
-# Part I: MariaDB
+## Part I: MariaDB
 
 Database Prepartion
 
-# Part II: Parse/Store .CSV Data
+## Part II: Parse/Store .CSV Data
