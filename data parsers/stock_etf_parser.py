@@ -23,12 +23,12 @@ def stock_price_data(path: str) -> dict[dict]:
                 try:
                     price_datas[ticker][date] = {
                                             'Date': date,
-                                            'Open': float(line[1]),
-                                            'High': float(line[2]),
-                                            'low': float(line[3]),
-                                            'AdjClose': float(line[5]),
-                                            'Volume': float(line[6]),       
-                                        }  
+                                            'Open': round(float(line[1]), 2),
+                                            'High': round(float(line[2]), 2),
+                                            'low': round(float(line[3]), 2),
+                                            'AdjClose': round(float(line[5]), 2),
+                                            'Volume': int(line[6]),       
+                                        }
                 except ValueError:
                     continue
 
@@ -36,10 +36,10 @@ def stock_price_data(path: str) -> dict[dict]:
 
 def main():
     stock_prices = stock_price_data('archive/stocks/*.csv')
-    print(len(stock_prices))
+    print(stock_prices['AMD']['2020-04-01'])
 
     etf_prices = stock_price_data('archive/etfs/*.csv')
-    print(etf_prices)
+    print(etf_prices['AGND']['2020-04-01'])
 
 
 if __name__ == '__main__':
