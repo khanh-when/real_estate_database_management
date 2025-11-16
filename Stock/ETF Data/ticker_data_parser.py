@@ -2,6 +2,7 @@ import csv
 from icecream import ic as print
 
 def stock_data() -> dict[dict]:
+    '''Parse and Return Ticker Data'''
     stocks = {}
     filename = 'archive/symbols_valid_meta.csv'
 
