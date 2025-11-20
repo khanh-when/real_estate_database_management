@@ -1,7 +1,7 @@
 import mariadb
 from dataparsers.ticker_data_parser import stock_data
 from dataparsers.stock_etf_parser import price_data
-
+from dataparsers.reformat_data import reformat
 
 def connection(db_name):
     '''Establish Database Connection to MariaDB'''
@@ -34,23 +34,19 @@ def insert_stock(conn, stock_id: str, security_name: str, listing_exchange: str,
         print(f"Error: Insert - {e}")
         raise mariadb.Error
 
-# def select_data (conn, attriubute: str, table: str, )
-
-
-
-
 
 
 def main():
 
     stocksData = stock_data()
 
+    formatted = reformat(stocksData, type=1)
+
+    for i in range(10):
+        print(formatted[i])
+
+
     # print(stocksData['AMD']['SecurityName'])
-
-    for item in stocksData.values():
-        print(item.values())
-
-
     # pricesData = price_data('archive/stocks/*.csv')
     # print(stocksData['AMD'])
     # print(pricesData['AMD']['2020-04-01'])
@@ -58,7 +54,7 @@ def main():
     try:
         conn = connection('stock_market')
 
-        insert_stock(conn, x['StockID'], x['SecurityName'], x['ListingExchange'], x['MarketCategory'], x['ETF'])
+        # insert_stock(conn, x['StockID'], x['SecurityName'], x['ListingExchange'], x['MarketCategory'], x['ETF'])
 
     except Exception as e:
         print(f'Error: {e}')
