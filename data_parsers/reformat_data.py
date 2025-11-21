@@ -7,8 +7,9 @@ def reformat(data, type):
     if type == 1: 
         return [tuple(stock_info.values()) for stock_info in data.values()]
     
+    # return list[tuple(str, datetime, float, float, float, float, int))]
     if type == 2:
-        pass
+        return [(k, *share_data.values()) for k, v in data.items() for share_data in v.values()]
 
     if type == 3:
         pass

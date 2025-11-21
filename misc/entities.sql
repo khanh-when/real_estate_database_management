@@ -12,11 +12,10 @@ CREATE TABLE Stocks(
 -- @block
 DROP TABLE Stocks;
 
-
 -- Create Price_Data Entity Table
 -- @block
 CREATE TABLE PriceData(
-    StockID VARCHAR(5),
+    StockID VARCHAR(6),
     TradeDate DATE,
     OpenPrice Decimal(10, 2) UNSIGNED,
     HighPrice Decimal(10, 2) UNSIGNED,
@@ -27,3 +26,5 @@ CREATE TABLE PriceData(
     FOREIGN KEY (StockID) REFERENCES Stocks(StockID)
 )
 
+--  @block
+DROP TABLE PriceData;
