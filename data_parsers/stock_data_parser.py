@@ -18,7 +18,7 @@ def stock_data() -> dict[dict]:
                             'SecurityName': line[2],
                             'ListingExchange': line[3],
                             'MarketCategory': line[4] if line[4].strip() else None,
-                            'ETF': line[5].strip().isupper() == 'Y'
+                            'ETF': line[5].strip().upper() == 'Y'
                         }
             
     return stocks

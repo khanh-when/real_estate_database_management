@@ -19,9 +19,10 @@ def connection(db_name):
     except mariadb.Error as e:
         print(f"Error: MariaDB Connection {e}")
         raise mariadb.Error
+    
 
 def insert_stocks(conn, data, type=1):
-    '''Insert a New Stock into the Stocks Table'''
+    '''Insert a New Stock(s) into the Stocks Table'''
     query = "INSERT INTO Stocks VALUES (?, ?, ?, ?, ?)"
 
     if type == 1:
@@ -41,6 +42,8 @@ def insert_stocks(conn, data, type=1):
                 
             with conn.cursor() as cursor:
                 cursor.executemany(query, data)
+            print(f"Successfully Inserted All Stocks into the Database.")
+
                 
         except mariadb.Error as e:
             print(f"Error: MariaDB Several Insertions {e}")
