@@ -22,10 +22,15 @@ def price_data(file_path) -> dict[dict]:
 
                 for line in csv_reader:
                     date = line[0]
-                    dt = date.split('-')
+                    dt = datetime.datetime(*list(map(int, date.split('-')))).date()
+
+                    # accept data entries from *2000 and later**
+                    if dt < datetime.datetime(2000, 1, 1).date():
+                        continue
+
                     try:
                         price_datas[ticker][date] = {
-                                                'TradeDate': datetime.datetime(*list(map(int, dt))).date(),
+                                                'TradeDate': dt,
                                                 'OpenPrice': round(float(line[1]), 2),
                                                 'HighPrice': round(float(line[2]), 2),
                                                 'LowPrice': round(float(line[3]), 2),
@@ -49,11 +54,5 @@ def main():
 
 if __name__ == '__main__':
     main()
-
-
-
-
-
-
 
 

@@ -11,8 +11,7 @@ def stock_data() -> dict[dict]:
         next(csv_reader)                 # skip header
 
         for line in csv_reader:
-            ticker = line[1]
-
+            ticker = line[1].replace('$', '-')
             stocks[ticker] = {
                             'StockID': ticker,
                             'SecurityName': line[2],
@@ -30,3 +29,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
