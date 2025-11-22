@@ -24,7 +24,7 @@ def stock_data() -> dict[dict]:
 
 def main():
     x = stock_data()
-    print(x['AMD'])
+    print(x['CARR.V'])
     print(x['AMD']['SecurityName'])
 
 if __name__ == "__main__":

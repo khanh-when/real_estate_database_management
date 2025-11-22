@@ -81,6 +81,7 @@ def chunk_data_insert(conn, data, archtype):
     
     print('All Data Successfully Inserted.')
 
+
 def main():
 
     # all stock data in a list[tuple] data structure
@@ -88,16 +89,26 @@ def main():
     print("All Stocks Datas:", len(share_data)) # 8,049 items
 
     # all share price data in a list[tuple] data structure
-    # share_prices = reformat(price_data('archive/stocks/*.csv'), type=2) 
-    # print("All Share Price Datas:", len(share_prices)) # 17,219,159 items
+    share_prices = reformat(price_data('archive/stocks/*.csv'), type=2) 
+    print("All Share Price Datas:", len(share_prices)) # 17,219,159 items
 
+    print(share_prices[7410])
+    print(share_prices[7409])
+    
+    # keys = [share_prices[i][0] for i in range(2573000, 2574001)]
+    # x = stock_data()
+
+    # for item in keys:
+    #     if item not in x:
+    #         print(item)
+    
     # # all etf price data in a list[tuple] data structure
     # etf_prices = reformat(price_data('archive/etfs/*.csv'), type=2)
     # print("All ETF Price Datas:", len(etf_prices)) # 3,905,783 items
 
     try:
         conn = connection('stock_market') # create cursor connection to stock_market db
-        chunk_data_insert(conn, share_data, archtype=1) # insert all .csv share data metadata
+        # chunk_data_insert(conn, share_data, archtype=1) # insert all .csv share data metadata
         # chunk_data_insert(conn, share_prices, archtype=2) # insert all .csv share price metadata
         # recursive_batch_insert(conn, etf_prices, type=2) # insert all .csv etf price metadata
 
@@ -110,5 +121,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-
-

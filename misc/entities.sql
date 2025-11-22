@@ -21,7 +21,7 @@ CREATE TABLE PriceData(
     HighPrice Decimal(10, 2) UNSIGNED,
     LowPrice DECIMAL(10, 2) UNSIGNED,
     AdjClosePrice DECIMAL(10, 2) UNSIGNED,
-    Volume INT UNSIGNED,
+    Volume BIGINT UNSIGNED,
     PRIMARY KEY(StockID, TradeDate),
     FOREIGN KEY (StockID) REFERENCES Stocks(StockID)
 )
