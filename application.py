@@ -74,7 +74,21 @@ def insert_prices(conn, data, type=1):
             print(f"Error: MariaDB several Insertions {e}")
             raise mariadb.Error
 
+
+
 def main():
+
+    def foo(x, y):
+        print('foo', x, y)
+
+    def bar(x, y):
+        print('bar', y, x)
+
+    hashmap = {1: foo,
+            2: bar}
+
+    hashmap[2](8, 5)
+
     # all stock data in a list[tuple] data structure
     share_data = reformat(stock_data(), type=1) 
     print("All Stocks Datas:", len(share_data)) # 
@@ -102,4 +116,5 @@ def main():
 
 if __name__ == '__main__':
     main()
+
 
